@@ -1,0 +1,40 @@
+<!-- html 부분은 잘 몰라 엄두가 나지 않는다 이해하고 있는 부분만 정리해 본다 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Scrapper</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+  <main class="container">
+    <hgroup>
+      <h1>검색 결과 {{keyword}}</h1>
+      <a target="_blank"_blank href="/export?keyword={{keyword}}">CSV 파일로 받기</a>    <!-- 발동조건이 링크안에 들어가 있다 -->
+    </hgroup>
+    <figure><table role="grid">                                                         <!-- 하얀 바탕에서는 왠쥐 동작을 하지 않는다 -->
+      <thead>                                                                           <!-- 헤드라는것을 알겟다 -->
+        <tr>                                                                            <!-- 이건 가로인거 같고 -->                 
+          <th>Title</th>                                                             
+          <th>Company</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>                                                                           <!-- 이건 바디라는것을 알겠다 -->
+      {% for job in jobs %}                                                             <!-- 파이썬을 구문을 실행한다는것을 알겠다 -->
+        <tr>
+          <td>{{job.title}}</td>                                                        <!-- 그 값을 차곡차곡 넣는것을 알겠다 th 는 헤드고 td 는 바디인가? -->
+          <td>{{job.company}}</td>
+          <td><a href="{{job.link}}" target="_blank">바로가기 &rarr;</a></td>
+        </tr>
+      {% endfor %}                      <!-- for 문이 끝났다는것을 알려줘야 하는거 같다 -->
+      </tbody>
+    </table></figure>    
+  </main>
+
+</body>
+</html>
